@@ -1,19 +1,25 @@
 package com.workshop.API_java.domain;
-
 import java.util.Objects;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 
+@Document(collection="pessoas")
 public class Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private Integer id;
+	
+	@Id
+	private String id;
+	@Indexed
 	private String nome;
 	private Integer idade;
-	private float peso;
+	private Double peso;
 	
 	public Pessoa() {
 	}
 
-	public Pessoa(Integer id, String nome, Integer idade, float peso) {
+	public Pessoa(String id, String nome, Integer idade, Double peso) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -21,11 +27,11 @@ public class Pessoa implements Serializable {
 		this.peso = peso;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -45,11 +51,11 @@ public class Pessoa implements Serializable {
 		this.idade = idade;
 	}
 
-	public float getPeso() {
+	public Double getPeso() {
 		return peso;
 	}
 
-	public void setPeso(float peso) {
+	public void setPeso(Double peso) {
 		this.peso = peso;
 	}
 
