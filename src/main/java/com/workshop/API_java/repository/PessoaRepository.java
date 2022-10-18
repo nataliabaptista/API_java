@@ -5,5 +5,6 @@ import com.workshop.API_java.domain.Pessoa;
 
 @Repository
 public interface PessoaRepository extends MongoRepository<Pessoa, String>{
+
 	
 }
