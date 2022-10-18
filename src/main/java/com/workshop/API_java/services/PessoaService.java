@@ -34,6 +34,19 @@ public class PessoaService {
 		repo.deleteById(id);
 	}
 	
+	public Pessoa update(Pessoa obj) {
+		Pessoa newObj = findById(obj.getId());
+		updateData(newObj, obj);
+		return repo.save(newObj);
+	}
+	
+	private void updateData(Pessoa newObj, Pessoa obj) {
+		newObj.setId(obj.getId());
+		newObj.setNome(obj.getNome());
+		newObj.setIdade(obj.getIdade());
+		newObj.setPeso(obj.getPeso());
+	}
+
 	public Pessoa fromDTO(PessoaDTO objDto) {
 		return new Pessoa(objDto.getId(), objDto.getNome(), objDto.getIdade(), objDto.getPeso());
 	}
